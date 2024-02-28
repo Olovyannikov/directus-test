@@ -1,0 +1,6 @@
+schema: ./src/services/schema.graphql
+extensions:
+  endpoints:
+    Remote GraphQL Endpoint:
+      url: ${NEXT_PUBLIC_GRAPHQL}
+      introspect: true

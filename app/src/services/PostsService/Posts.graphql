@@ -1,0 +1,9 @@
+query allPosts {
+    posts {
+        id
+        slug
+        title
+        status
+        featured_image
+    }
+}

@@ -1,0 +1,19 @@
+documents: 'src/services/**/!(*.generated).{graphql,ts}'
+schema: ${NEXT_PUBLIC_GRAPHQL}
+require:
+  - ts-node/register
+generates:
+  src/services/generated.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-query
+    config:
+      withHooks: true
+      fetcher: graphql-request
+      exposeFetcher: true
+      exposeQueryKeys: true
+      noNamespaces: true
+      pureMagicComments: true
+      declarationKind: 'interface'
+      skipTypename: true
