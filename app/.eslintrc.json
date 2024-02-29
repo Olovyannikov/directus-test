@@ -38,17 +38,32 @@
     "no-use-before-define": "warn",
     "no-useless-computed-key": "warn",
     "no-unsafe-optional-chaining": "warn",
-    "no-param-reassign": ["error", {
-      "props": false
-    }],
-    "no-console": ["warn", {
-      "allow": ["warn", "error"]
-    }],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": false
+      }
+    ],
+    "no-console": [
+      "warn",
+      {
+        "allow": [
+          "warn",
+          "error"
+        ]
+      }
+    ],
     "no-implicit-coercion": "error",
-    "arrow-body-style": ["warn", "as-needed"],
+    "arrow-body-style": [
+      "warn",
+      "as-needed"
+    ],
     "default-case": "error",
     "default-param-last": "error",
-    "object-curly-spacing": ["warn", "always"],
+    "object-curly-spacing": [
+      "warn",
+      "always"
+    ],
     "prefer-const": "error",
     "jest/no-focused-tests": "error",
     "jsx-a11y/label-has-associated-control": "off",
@@ -56,7 +71,15 @@
     "hooks/sort": [
       "error",
       {
-        "groups": ["useReducer", "useContext", "useRef", "useState", "useDispatch", "useCallback", "useEffect"]
+        "groups": [
+          "useReducer",
+          "useContext",
+          "useRef",
+          "useState",
+          "useDispatch",
+          "useCallback",
+          "useEffect"
+        ]
       }
     ],
     "react/jsx-curly-brace-presence": [
@@ -74,7 +97,10 @@
         "namedComponents": "arrow-function"
       }
     ],
-    "react/jsx-fragments": ["error", "syntax"],
+    "react/jsx-fragments": [
+      "error",
+      "syntax"
+    ],
     "react/react-in-jsx-scope": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "off",
@@ -147,17 +173,38 @@
       "warn",
       {
         "groups": [
-          ["^react", "^@?\\w"],
+          [
+            "^react",
+            "^@?\\w"
+          ],
           /* import 'foo*' or '@foo' */
           [
             "^\\u0000@?\\w"
           ],
           /* import from '@/foo' */
-          ["^@/\\w"],
+          [
+            "^@/\\w"
+          ],
           /* import .. from './foo' */
-          ["^\\."],
+          [
+            "^\\."
+          ],
+          /* import ServiceName from '@/services' */
+          [
+            "^@/services?\\w"
+          ],
+          /* import Component from '@/components' */
+          [
+            "^@/(components|entities|features)"
+          ],
+          /* import Component from '@/components/Component' */
+          [
+            "^@/(components|entities|features)?\\w"
+          ],
           /* import styles */
-          ["^.+\\.?(s?css)$"]
+          [
+            "^.+\\.?(s?css)$"
+          ]
         ]
       }
     ]
@@ -176,13 +223,17 @@
   },
   "overrides": [
     {
-      "files": ["jest.config.(js|ts)"],
+      "files": [
+        "jest.config.(js|ts)"
+      ],
       "rules": {
         "import/no-default-export": "off"
       }
     },
     {
-      "files": ["**/*.{spec,test}.*"],
+      "files": [
+        "**/*.{spec,test}.*"
+      ],
       "rules": {
         "@typescript-eslint/no-non-null-assertion": "off",
         "react/jsx-no-constructed-context-values": "off",
@@ -193,7 +244,11 @@
       }
     },
     {
-      "files": ["src/pages/**/*", "src/layouts/**/*", "**/*.config.ts"],
+      "files": [
+        "src/pages/**/*",
+        "src/layouts/**/*",
+        "**/*.config.ts"
+      ],
       "rules": {
         "import/no-default-export": "off",
         "react/function-component-definition": [

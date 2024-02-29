@@ -1,0 +1,16 @@
+query allProducts {
+    products {
+        id
+        price
+        product_name
+        product_image {
+            id
+        }
+        product_categories {
+            categories_id {
+                id
+                category_name
+            }
+        }
+    }
+}

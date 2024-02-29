@@ -6,15 +6,80 @@ schema {
 }
 
 type Query {
+    categories(filter: categories_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [categories!]!
+    categories_aggregated(filter: categories_filter, groupBy: [String], limit: Int, offset: Int, page: Int, search: String, sort: [String]): [categories_aggregated!]!
+    categories_by_id(id: ID!): categories
+    categories_by_version(id: ID!, version: String!): version_categories
     posts(filter: posts_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [posts!]!
     posts_aggregated(filter: posts_filter, groupBy: [String], limit: Int, offset: Int, page: Int, search: String, sort: [String]): [posts_aggregated!]!
     posts_by_id(id: ID!): posts
     posts_by_version(id: ID!, version: String!): version_posts
+    products(filter: products_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [products!]!
+    products_aggregated(filter: products_filter, groupBy: [String], limit: Int, offset: Int, page: Int, search: String, sort: [String]): [products_aggregated!]!
+    products_by_id(id: ID!): products
+    products_by_version(id: ID!, version: String!): version_products
+    products_categories(filter: products_categories_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [products_categories!]!
+    products_categories_aggregated(filter: products_categories_filter, groupBy: [String], limit: Int, offset: Int, page: Int, search: String, sort: [String]): [products_categories_aggregated!]!
+    products_categories_by_id(id: ID!): products_categories
+    products_categories_by_version(id: ID!, version: String!): version_products_categories
 }
 
 type Subscription {
+    categories_mutated(event: EventEnum): categories_mutated
     directus_files_mutated(event: EventEnum): directus_files_mutated
     posts_mutated(event: EventEnum): posts_mutated
+    products_categories_mutated(event: EventEnum): products_categories_mutated
+    products_mutated(event: EventEnum): products_mutated
+}
+
+type categories {
+    category_name: String
+    date_created: Date
+    date_created_func: datetime_functions
+    date_updated: Date
+    date_updated_func: datetime_functions
+    id: ID!
+    slug: String
+    sort: Int
+    status: String
+    user_created: String
+    user_updated: String
+}
+
+type categories_aggregated {
+    avg: categories_aggregated_fields
+    avgDistinct: categories_aggregated_fields
+    count: categories_aggregated_count
+    countAll: Int
+    countDistinct: categories_aggregated_count
+    group: JSON
+    max: categories_aggregated_fields
+    min: categories_aggregated_fields
+    sum: categories_aggregated_fields
+    sumDistinct: categories_aggregated_fields
+}
+
+type categories_aggregated_count {
+    category_name: Int
+    date_created: Int
+    date_updated: Int
+    id: Int
+    slug: Int
+    sort: Int
+    status: Int
+    user_created: Int
+    user_updated: Int
+}
+
+type categories_aggregated_fields {
+    id: Float
+    sort: Float
+}
+
+type categories_mutated {
+    data: categories
+    event: EventEnum
+    key: ID!
 }
 
 type count_functions {
@@ -122,6 +187,116 @@ type posts_mutated {
     key: ID!
 }
 
+type products {
+    date_created: Date
+    date_created_func: datetime_functions
+    date_updated: Date
+    date_updated_func: datetime_functions
+    id: ID!
+    price: String
+    product_categories(filter: products_categories_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [products_categories]
+    product_categories_func: count_functions
+    product_description: String
+    product_image(filter: directus_files_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): directus_files
+    product_name: String
+    slug: String
+    sort: Int
+    status: String
+    user_created: String
+    user_updated: String
+}
+
+type products_aggregated {
+    avg: products_aggregated_fields
+    avgDistinct: products_aggregated_fields
+    count: products_aggregated_count
+    countAll: Int
+    countDistinct: products_aggregated_count
+    group: JSON
+    max: products_aggregated_fields
+    min: products_aggregated_fields
+    sum: products_aggregated_fields
+    sumDistinct: products_aggregated_fields
+}
+
+type products_aggregated_count {
+    date_created: Int
+    date_updated: Int
+    id: Int
+    price: Int
+    product_categories: Int
+    product_description: Int
+    product_image: Int
+    product_name: Int
+    slug: Int
+    sort: Int
+    status: Int
+    user_created: Int
+    user_updated: Int
+}
+
+type products_aggregated_fields {
+    id: Float
+    sort: Float
+}
+
+type products_categories {
+    categories_id(filter: categories_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): categories
+    id: ID!
+    products_id(filter: products_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): products
+}
+
+type products_categories_aggregated {
+    avg: products_categories_aggregated_fields
+    avgDistinct: products_categories_aggregated_fields
+    count: products_categories_aggregated_count
+    countAll: Int
+    countDistinct: products_categories_aggregated_count
+    group: JSON
+    max: products_categories_aggregated_fields
+    min: products_categories_aggregated_fields
+    sum: products_categories_aggregated_fields
+    sumDistinct: products_categories_aggregated_fields
+}
+
+type products_categories_aggregated_count {
+    categories_id: Int
+    id: Int
+    products_id: Int
+}
+
+type products_categories_aggregated_fields {
+    categories_id: Float
+    id: Float
+    products_id: Float
+}
+
+type products_categories_mutated {
+    data: products_categories
+    event: EventEnum
+    key: ID!
+}
+
+type products_mutated {
+    data: products
+    event: EventEnum
+    key: ID!
+}
+
+type version_categories {
+    category_name: String
+    date_created: Date
+    date_created_func: datetime_functions
+    date_updated: Date
+    date_updated_func: datetime_functions
+    id: ID!
+    slug: String
+    sort: Int
+    status: String
+    user_created: String
+    user_updated: String
+}
+
 type version_posts {
     body: String
     date_created: Date
@@ -136,6 +311,31 @@ type version_posts {
     title: String
     user_created: String
     user_updated: String
+}
+
+type version_products {
+    date_created: Date
+    date_created_func: datetime_functions
+    date_updated: Date
+    date_updated_func: datetime_functions
+    id: ID!
+    price: String
+    product_categories: JSON
+    product_categories_func: count_functions
+    product_description: String
+    product_image: String
+    product_name: String
+    slug: String
+    sort: Int
+    status: String
+    user_created: String
+    user_updated: String
+}
+
+type version_products_categories {
+    categories_id: Int
+    id: ID!
+    products_id: Int
 }
 
 enum EventEnum {
@@ -169,6 +369,22 @@ input big_int_filter_operators {
     _nin: [GraphQLBigInt]
     _nnull: Boolean
     _null: Boolean
+}
+
+input categories_filter {
+    _and: [categories_filter]
+    _or: [categories_filter]
+    category_name: string_filter_operators
+    date_created: date_filter_operators
+    date_created_func: datetime_function_filter_operators
+    date_updated: date_filter_operators
+    date_updated_func: datetime_function_filter_operators
+    id: number_filter_operators
+    slug: string_filter_operators
+    sort: number_filter_operators
+    status: string_filter_operators
+    user_created: string_filter_operators
+    user_updated: string_filter_operators
 }
 
 input count_function_filter_operators {
@@ -262,6 +478,35 @@ input posts_filter {
     sort: number_filter_operators
     status: string_filter_operators
     title: string_filter_operators
+    user_created: string_filter_operators
+    user_updated: string_filter_operators
+}
+
+input products_categories_filter {
+    _and: [products_categories_filter]
+    _or: [products_categories_filter]
+    categories_id: categories_filter
+    id: number_filter_operators
+    products_id: products_filter
+}
+
+input products_filter {
+    _and: [products_filter]
+    _or: [products_filter]
+    date_created: date_filter_operators
+    date_created_func: datetime_function_filter_operators
+    date_updated: date_filter_operators
+    date_updated_func: datetime_function_filter_operators
+    id: number_filter_operators
+    price: string_filter_operators
+    product_categories: products_categories_filter
+    product_categories_func: count_function_filter_operators
+    product_description: string_filter_operators
+    product_image: directus_files_filter
+    product_name: string_filter_operators
+    slug: string_filter_operators
+    sort: number_filter_operators
+    status: string_filter_operators
     user_created: string_filter_operators
     user_updated: string_filter_operators
 }
