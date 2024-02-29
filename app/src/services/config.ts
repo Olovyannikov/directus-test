@@ -1,4 +1,4 @@
-import {GraphQLClient} from "graphql-request";
+import { GraphQLClient } from 'graphql-request';
 
 export const BASE_URL = 'http://0.0.0.0:8055/graphql';
 

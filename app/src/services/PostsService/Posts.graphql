@@ -2,8 +2,11 @@ query allPosts {
     posts {
         id
         slug
+        body
         title
         status
-        featured_image
+        featured_image {
+            id
+        }
     }
 }

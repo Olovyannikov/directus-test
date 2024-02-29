@@ -1,0 +1,1 @@
+export const ASSETS_URL = process.env.NEXT_PUBLIC_ASSETS_URL;
