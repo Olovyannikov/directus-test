@@ -14,3 +14,27 @@ query allProducts {
         }
     }
 }
+
+query allCategories {
+    categories {
+        id
+        category_name
+    }
+}
+
+query filteredProducts($categories: [GraphQLStringOrFloat]) {
+    products(filter: {product_categories: {categories_id: {id: {_in: $categories}}}}) {
+        id
+        price
+        product_name
+        product_image {
+            id
+        }
+        product_categories {
+            categories_id {
+                id
+                category_name
+            }
+        }
+    }
+}

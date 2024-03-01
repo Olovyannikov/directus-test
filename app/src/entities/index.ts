@@ -1,2 +1,3 @@
 export * from './PostCard';
-export * from './ProductCard';
+export * from './PageTitle';
+export * from './ProductsList';

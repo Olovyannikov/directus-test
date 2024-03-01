@@ -8,6 +8,8 @@ generates:
       - typescript
       - typescript-operations
       - typescript-react-query
+      - add:
+          content: '// @ts-nocheck TODO: lib error'
     config:
       withHooks: true
       fetcher: graphql-request

@@ -195,11 +195,11 @@
           ],
           /* import Component from '@/components' */
           [
-            "^@/(components|entities|features)"
+            "^@/(components|entities|features|widgets)"
           ],
           /* import Component from '@/components/Component' */
           [
-            "^@/(components|entities|features)?\\w"
+            "^@/(components|entities|features|widgets)?\\w"
           ],
           /* import styles */
           [

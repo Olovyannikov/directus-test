@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:ts": "eslint \"**/*.{ts,tsx}\"",
+    "prettier": "npx prettier . --write",
     "graphql:watch": "graphql-codegen --require dotenv/config --config codegen.yml dotenv_config_path=.env.local --watch",
     "graphql:codegen": "graphql-codegen --require dotenv/config --config codegen.yml dotenv_config_path=.env.local"
   },
