@@ -258,6 +258,15 @@
           }
         ]
       }
+    },
+    {
+      "files": [
+        "**/generated.ts"
+      ],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
+        "indent": "off"
+      }
     }
   ]
 }

@@ -1,4 +1,5 @@
 import { dehydrate } from '@tanstack/query-core';
+import { GetStaticPaths } from 'next';
 
 import { RootLayout } from '@/layouts';
 import { queryClient } from '@/pages/_app';

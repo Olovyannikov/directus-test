@@ -2,6 +2,7 @@ query allProducts {
     products {
         id
         price
+        slug
         product_name
         product_image {
             id
@@ -10,6 +11,7 @@ query allProducts {
             categories_id {
                 id
                 category_name
+                slug
             }
         }
     }
@@ -23,10 +25,11 @@ query allCategories {
 }
 
 query filteredProducts($categories: [GraphQLStringOrFloat]) {
-    products(filter: {product_categories: {categories_id: {id: {_in: $categories}}}}) {
+    products(filter: { product_categories: { categories_id: { id: {_in: $categories}} } }) {
         id
-        price
         product_name
+        price
+        slug
         product_image {
             id
         }
@@ -34,6 +37,7 @@ query filteredProducts($categories: [GraphQLStringOrFloat]) {
             categories_id {
                 id
                 category_name
+                slug
             }
         }
     }
